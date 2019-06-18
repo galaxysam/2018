@@ -1,5 +1,5 @@
 #include <iostream>
-
+#include <string.h>
 class Table {
 public:
 
@@ -74,24 +74,36 @@ void Table::delRow(int n)
 }
 void Table::show()
 {
+	std::cout<<"row="<<row<<"  col="<<col<<std::endl;
 	for(int i=0;i<row;i++)
 	{
-		for(int j=0;j<col;j++)
+		for(int j=0;j<col*9;j++)
 		{
+			std::cout<<"-";
+		}
+		std::cout<<std::endl;
+	
+		for(int j=0;j<col;j++)
+		{std::cout<<"|";
 			for(int k=0;k<7;k++)
 			{
 				std::cout<<c[i][j][k];
 			}
-			std::cout<<"|||";
+			std::cout<<"|";
 		}
-		std::cout<<std::endl;std::cout<<std::endl;
+		std::cout<<std::endl;
+		for(int j=0;j<col*9;j++)
+		{
+			std::cout<<"-";
+		}
+		std::cout<<std::endl;
 	}
 	std::cout<<std::endl;std::cout<<std::endl;std::cout<<std::endl;
 }
 
 void Table::set(int a,int b,char d[7])
 {
-	for(int i=0;i<7;i++)
+	for(int i=0;i<strlen(d);i++)
 	{
 	
 	c[a][b][i]=d[i];
